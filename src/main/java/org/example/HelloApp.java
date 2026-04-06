@@ -3,16 +3,28 @@ package org.example;
 public class HelloApp {
     public static void main(String[] args) {
 
-        String name;
+        String message;
 
-        // Check if multiple names are provided
-        if (args.length > 0) {
-            name = String.join(", ", args);  // Join all names with comma
+        // Check if no arguments are provided
+        if (args.length == 0) {
+            message = "Hello, World!";
         } else {
-            name = "World";  // Default value
+            StringBuilder nameBuilder = new StringBuilder();
+            boolean first = true;
+
+            // Enhanced for loop
+            for (String name : args) {
+                if (!first) {
+                    nameBuilder.append(", ");
+                }
+                nameBuilder.append(name);
+                first = false;
+            }
+
+            message = "Hello, " + nameBuilder.toString() + "!";
         }
 
-        // Display greeting
-        System.out.println("Hello, " + name + "!");
+        // Print final message
+        System.out.println(message);
     }
 }
