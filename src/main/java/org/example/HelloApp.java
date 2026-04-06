@@ -5,26 +5,24 @@ public class HelloApp {
 
         String message;
 
-        // Check if no arguments are provided
+        // No arguments → default
         if (args.length == 0) {
             message = "Hello, World!";
         } else {
             StringBuilder nameBuilder = new StringBuilder();
-            boolean first = true;
 
             // Enhanced for loop
             for (String name : args) {
-                if (!first) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(name);
-                first = false;
+                nameBuilder.append(name).append(", ");
             }
 
-            message = "Hello, " + nameBuilder.toString() + "!";
+            // Remove trailing ", "
+            String finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
+
+            message = "Hello, " + finalNames + "!";
         }
 
-        // Print final message
+        // Print result
         System.out.println(message);
     }
 }
