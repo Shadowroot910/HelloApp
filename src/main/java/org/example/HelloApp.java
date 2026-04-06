@@ -1,28 +1,18 @@
 package org.example;
 
 public class HelloApp {
+
     public static void main(String[] args) {
 
-        String message;
+        // Default value
+        String names = "World";
 
-        // No arguments → default
-        if (args.length == 0) {
-            message = "Hello, World!";
-        } else {
-            StringBuilder nameBuilder = new StringBuilder();
-
-            // Enhanced for loop
-            for (String name : args) {
-                nameBuilder.append(name).append(", ");
-            }
-
-            // Remove trailing ", "
-            String finalNames = nameBuilder.substring(0, nameBuilder.length() - 2);
-
-            message = "Hello, " + finalNames + "!";
+        // If arguments are provided, join them
+        if (args.length > 0) {
+            names = String.join(", ", args);
         }
 
-        // Print result
-        System.out.println(message);
+        // Print greeting
+        System.out.println("Hello, " + names + "!");
     }
 }
